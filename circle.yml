@@ -1,16 +1,15 @@
 dependencies:
   override:
-    - cabal update
-    - cabal sandbox init
-    - cabal install --dependencies-only --enable-tests
-
-machine:
-  ghc:
-    version: 7.8.3
+    - wget https://www.haskell.org/ghc/dist/7.10.1/ghc-7.10.1-x86_64-unknown-linux-deb7.tar.xz
+    - tar -xJf ghc-7.10.1-x86_64-unknown-linux-deb7.tar.xz
+    - wget https://www.haskell.org/cabal/release/cabal-install-1.22.0.0/cabal-1.22.0.0-i386-unknown-linux.tar.gz
+    - tar -xzvf cabal-1.22.0.0-i386-unknown-linux.tar.gz
+    - cd ghc-7.10.1 && ./configure && sudo make install 
+    - cd ..
+    - PATH=/usr/local/bin:$PATH cabal update
+    - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal sandbox init && cabal sandbox add-source ../stripe-core && cabal sandbox add-source ../stripe-tests && cabal install --dependencies-only --allow-newer 
 
 test:
   override:
-   - cabal configure --enable-tests
-   - cabal build
-   - dist/build/tests/tests
+   - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal configure --enable-tests && cabal build && dist/build/tests/tests
 
