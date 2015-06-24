@@ -5,6 +5,7 @@ dependencies:
     - wget https://www.haskell.org/cabal/release/cabal-install-1.22.0.0/cabal-1.22.0.0-i386-unknown-linux.tar.gz
     - tar -xzvf cabal-1.22.0.0-i386-unknown-linux.tar.gz
     - cd ghc-7.10.1 && ./configure && sudo make install 
+    - sudo apt-get install openssl
     - PATH=/usr/local/bin:$PATH cabal update
     - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal update && cabal --v && cabal sandbox init && cabal sandbox add-source ../stripe-core && cabal sandbox add-source ../stripe-tests && PATH=/usr/local/bin:$PATH cabal install --dependencies-only --allow-newer --enable-tests
 
