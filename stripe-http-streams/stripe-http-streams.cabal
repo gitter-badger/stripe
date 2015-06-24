@@ -35,7 +35,7 @@ Test-Suite tests
     main-is:          Main.hs
     hs-source-dirs:   tests
     build-depends:    HsOpenSSL
-                    , base                >= 4.7  && < 5
+                    , base                >= 4  && < 5
                     , free                >= 4.10 && < 4.13
                     , hspec               >= 2.1  && < 2.2
                     , http-streams        >= 0.7  && < 0.9
