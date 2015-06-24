@@ -6,7 +6,7 @@ dependencies:
     - tar -xzvf cabal-1.22.0.0-i386-unknown-linux.tar.gz
     - cd ghc-7.10.1 && ./configure && sudo make install 
     - PATH=/usr/local/bin:$PATH cabal update
-    - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal update && cabal sandbox init && cabal install Cabal --constraint=base==4.7.0.0 --allow-newer && cabal sandbox add-source ../stripe-core && cabal sandbox add-source ../stripe-tests && cabal install --dependencies-only --allow-newer --enable-tests
+    - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal update && cabal sandbox init && cabal install Cabal --constraint=base==4.7.0.0 --allow-newer -fforce-recomp && cabal sandbox add-source ../stripe-core && cabal sandbox add-source ../stripe-tests && cabal install --dependencies-only --allow-newer --enable-tests
 
 test:
   override:
