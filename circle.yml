@@ -10,5 +10,5 @@ dependencies:
 
 test:
   override:
-   - PATH=/usr/local/bin:$PATH cd stripe-http-streams && cabal configure --enable-tests && cabal install --dependencies-only --enable-tests && cabal build && dist/build/tests/tests
+   - cd stripe-http-streams && PATH=/usr/local/bin:$PATH cabal configure --enable-tests && PATH=/usr/local/bin:$PATH cabal install --dependencies-only --enable-tests && PATH=/usr/local/bin:$PATH cabal build && dist/build/tests/tests
 
